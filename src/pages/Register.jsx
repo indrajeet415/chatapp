@@ -1,6 +1,6 @@
 import React from "react";
-import "./style.css";
-
+import "./style.scss";
+import ADD from "../img/addAvatar.png"
 
 function Register() {
   return (
@@ -12,8 +12,11 @@ function Register() {
           <input type="text" placeHolder="Name" />
           <input type="email" placeHolder="email" />
           <input type="password" placeHolder="password" />
-          <input type="file" placeHolder="file" />
-
+          <input style={{display:"none"}} type="file" placeHolder="file" />
+          <label htmlfor="file">
+            <img src={ADD} alt=" " />
+            <span>add an avatar</span>
+          </label>
           <button>Signup</button>
         </form>
         <p>Do you have an account?Login</p>

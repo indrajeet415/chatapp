@@ -1,3 +1,23 @@
+@mixin mobile {
+  @media screen and (max-width:480px) {
+    @content
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width:780px) {
+    @content
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width:1200px) {
+    @content
+  }
+}
+
+
+
 .form-container {
     height: 100vh;
   align-items: center;
@@ -71,11 +91,16 @@
     display: flex;
     overflow: hidden;
 
+    @include tablet {
+      width: 90%;
+    }
+
   }
 
   .sidebar {
     flex: 1;
     background-color: #5d5b8d;
+    position: relative;
   }
 
   .navbar {
@@ -89,6 +114,10 @@
 
     .logo {
       font-weight: bold;
+
+      @include tablet {
+        display:none;
+      }
 
     }
 
@@ -107,6 +136,11 @@
 
     button {
       cursor: pointer;
+
+      @include tablet {
+        position: absolute;
+        bottom: 10px;
+      }
     }
   }
 
@@ -261,10 +295,14 @@
           flex-direction: row-reverse;
           
           
-          .messageContent p {
-            background-color: #a7bcff;
-            border-radius: 10px 0px 10px 10px;
+          .messageContent  {
+            align-items: flex-end;
+            p{
+              background-color: #a7bcff;
+              border-radius: 10px 0px 10px 10px;
 
+            }
+            
           }
         }
         .messageContent {
@@ -278,6 +316,7 @@
             background-color: white;
             padding:10px 20px;
             border-radius: 0px 10px 10px 10px;
+            max-width: max-content;
           }
 
           img {

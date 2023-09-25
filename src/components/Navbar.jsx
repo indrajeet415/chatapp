@@ -1,16 +1,19 @@
 import React from "react";
-
+import { signOut } from "firebase/auth"
 import "../pages/style.scss";
+import { auth } from "../firebase"; 
+import CurrentUser  from "../pages/Register";
+
 
 const Navbar = () => {
   return (
     <div className="navbar">
       <span className="logo">CHAT APP</span>
       <div className="user">
-      <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="" /> 
-        <span> jhon</span>
+      <img src="{Current.photoURL}" alt="" /> 
+        <span>{CurrentUser.displayName}</span>
       </div>
-      <button>logout</button>
+      <button onClick = {() => signOut(auth)}> logout</button>
     </div>
   );
 };

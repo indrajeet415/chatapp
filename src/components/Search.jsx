@@ -13,7 +13,7 @@ import {
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import "../pages/style.scss";
-import { ChatContext } from "../context/ChatContext";
+// import { ChatContext } from "../context/ChatContext";
 
 const Search = () => {
   const [username, setUsername] = useState("");
@@ -21,7 +21,7 @@ const Search = () => {
   const [err, setErr] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
-  const { data, dispatch } = useContext(ChatContext);
+  // const { data, dispatch } = useContext(ChatContext);
 
   const handleSearch = async () => {
     const q = query(

@@ -20,9 +20,10 @@ const Input = () => {
 
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
-
+ console.log("inside input",data)
   const handleSend = async () => {
     if (img) {
+      console.log("message sent was img",img)
       const storageRef = ref(storage, uuid());
 
       const uploadTask = uploadBytesResumable(storageRef, img);

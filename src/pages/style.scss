@@ -18,9 +18,13 @@
 
 
 
+
 .form-container {
   background-color: #73f0ca;
   height: 100vh;
+ 
+  
+  margin:0;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -61,7 +65,7 @@
     }
 
     button {
-      background-color: #808283;
+      background-color: #0647f8;
       color: rgb(252, 249, 249);
       padding: 15px;
       border: none;
@@ -239,6 +243,7 @@
 
   .chat {
     flex: 2;
+    background-color: gray;
 
     .chatInfo {
       height: 50px;

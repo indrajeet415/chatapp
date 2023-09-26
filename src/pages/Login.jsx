@@ -27,8 +27,8 @@ function Login() {
         <span className="logo">CHAT APP</span>
         <span className="title">Login</span>
         <form className="user-details" onSubmit={handleSubmit}>
-          <input type="email" placeholder="email" />
-          <input type="password" placeholder="password" />
+          <input required type="email" placeholder="email" />
+          <input required type="password" placeholder="password" />
 
           <button>Signin</button>
           {err && <span>Something went wrong</span>}

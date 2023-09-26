@@ -13,6 +13,7 @@ import {
 import { db } from "../firebase";
 import { AuthContext } from "../context/AuthContext";
 import "../pages/style.scss";
+import { ChatContext } from "../context/ChatContext";
 
 const Search = () => {
   const [username, setUsername] = useState("");
@@ -20,6 +21,7 @@ const Search = () => {
   const [err, setErr] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
+  const { data, dispatch } = useContext(ChatContext);
 
   const handleSearch = async () => {
     const q = query(
@@ -28,11 +30,15 @@ const Search = () => {
     );
 
     try {
+      console.log(q);
       const querySnapshot = await getDocs(q);
+      console.log(querySnapshot);
       querySnapshot.forEach((doc) => {
         setUser(doc.data());
+        console.log(doc.data());
       });
     } catch (err) {
+      console.log(err);
       setErr(true);
     }
   };
@@ -42,7 +48,6 @@ const Search = () => {
   };
 
   const handleSelect = async () => {
-    
     const combinedId =
       currentUser.uid > user.uid
         ? currentUser.uid + user.uid
@@ -51,10 +56,8 @@ const Search = () => {
       const res = await getDoc(doc(db, "chats", combinedId));
 
       if (!res.exists()) {
-       
         await setDoc(doc(db, "chats", combinedId), { messages: [] });
 
-       
         await updateDoc(doc(db, "userChats", currentUser.uid), {
           [combinedId + ".userInfo"]: {
             uid: user.uid,
@@ -73,6 +76,8 @@ const Search = () => {
           [combinedId + ".date"]: serverTimestamp(),
         });
       }
+
+      // dispatch({ type: "CHANGE_USER", payload: user });
     } catch (err) {}
 
     setUser(null);
